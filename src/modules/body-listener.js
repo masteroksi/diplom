@@ -7,7 +7,7 @@ export class BodyListener {
         document.body
             .addEventListener(eventType, (ev) =>
                 this.eventTypes[eventType]
-                    .forEach(cb => cb(ev)),
+                    .forEach(callback => callback(ev)),
             );
     }
 

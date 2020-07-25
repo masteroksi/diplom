@@ -1,9 +1,9 @@
 import { BodyListener } from './modules/body-listener';
-import callMeModal from './modules/call-me-modal';
+import modals from './modules/modals';
 import inputValidator from './modules/input-validator';
 import formSubmit from './modules/form-submit';
 
 const bodyListener = new BodyListener();
-callMeModal(bodyListener);
+modals(bodyListener);
 inputValidator(bodyListener);
 formSubmit(bodyListener);

@@ -1,4 +1,4 @@
-export default function () {
+export default function (bodyListener) {
     const modal = document.querySelector('.popup-call');
 
     if (!modal) {
@@ -8,8 +8,8 @@ export default function () {
         modal.style.display = needToShow ? 'block' : 'none';
     };
 
-    document.body.addEventListener('click', function(ev) {
-        const {target} = ev;
+    bodyListener.on('click', function(ev) {
+        const { target } = ev;
         if (!target) {
             return;
         }

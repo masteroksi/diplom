@@ -8,7 +8,12 @@ const modals = [
         modalSelector: '.popup-discount',
         openButtonsClassNames: ['discount-btn'],
         closeButtonsClassNames: ['popup-discount', 'popup-close'],
-    }
+    },
+    {
+        modalSelector: '.popup-check',
+        openButtonsClassNames: ['gauging-button'],
+        closeButtonsClassNames: ['popup-check', 'popup-close'],
+    },
 ];
 
 export default function(bodyListener) {

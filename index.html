@@ -175,34 +175,34 @@
                                 <div class="title-text">первый колодец (приемный)</div>
                                 <div class="select-box">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
+                                    <select id="main-diameter" class="form-control expand">
+                                        <option value="1.4">1.4 метра</option>
+                                        <option value="2.0">2 метра</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
+                                    <select id="main-count" class="form-control expand">
+                                        <option value="1">1 штука</option>
+                                        <option value="2">2 штуки</option>
+                                        <option value="3">3 штуки</option>
                                     </select>
                                 </div>
 
                                 <div class="title-text">второй колодец (дренажный)</div>
                                 <div class="select-box">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
+                                    <select id="second-diameter" class="form-control expand">
+                                        <option value="1.4">1.4 метра</option>
+                                        <option value="2.0">2 метра</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
+                                    <select id="second-count" class="form-control expand">
+                                        <option value="1">1 штука</option>
+                                        <option value="2">2 штуки</option>
+                                        <option value="3">3 штуки</option>
                                     </select>
                                 </div>
                                 <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
@@ -253,7 +253,7 @@
                              aria-labelledby="headingFour">
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
-                                <input type="text">
+                                <input id="meters-to-home" type="text">
                                 <button class="button construct-btn call-btn">Получить расчет и скидку</button>
                             </div>
                         </div>
@@ -439,7 +439,7 @@
             <div class="col-lg-6 col-md-6">
                 <p class="question">Остались вопросы?</p>
                 <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
-                <form class="director-form">
+                <form action="/order-a-consultation" class="director-form">
                     <input type="text" name="user_quest" placeholder="Введите свой вопрос" required>
                     <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
                         консультацию
@@ -484,9 +484,9 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form action="/get-calculation-and-discount" class="capture-form text-center">
                 <span class="circle"><button class="popup-close" type="button">&times;</button></span>
-                <label for="name_1">Как к вам обращаться</label>
+                <label for="name_1">Как к вам обращаться 1</label>
                 <input type="text" id="name_1" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_1">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_1" name="user_phone" placeholder="+7(___)___-__-__"
@@ -505,9 +505,9 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form action="/order-a-consultation" class="capture-form text-center">
                 <span class="circle"><button class="popup-close" type="button">&times;</button></span>
-                <label for="name_11">Как к вам обращаться</label>
+                <label for="name_11">Как к вам обращаться 2</label>
                 <input type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_11">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_11" name="user_phone" placeholder="+7(___)___-__-__"
@@ -526,9 +526,9 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form action="/order-a-consultation" class="capture-form text-center">
                 <span class="circle"><button class="popup-close" type="button">&times;</button></span>
-                <label for="name_12">Как к вам обращаться</label>
+                <label for="name_12">Как к вам обращаться 3</label>
                 <input type="text" id="name_12" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_12">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_12" name="user_phone" placeholder="+7(___)___-__-__"
@@ -547,9 +547,9 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form action="/order-a-consultation" class="capture-form text-center">
                 <span class="circle"><button class="popup-close" type="button">&times;</button></span>
-                <label for="name_13">Как к вам обращаться</label>
+                <label for="name_13">Как к вам обращаться 4</label>
                 <input type="text" id="name_13" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_13">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_13" name="user_phone" placeholder="+7(___)___-__-__"

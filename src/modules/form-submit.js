@@ -1,3 +1,5 @@
+import { orderData } from './calculator';
+
 export default function formSubmit(bodyListener) {
     const loadingMessage = 'Загрузка...';
     const successMessage = 'Спасибо мы свяжемся с вами!';
@@ -26,6 +28,13 @@ export default function formSubmit(bodyListener) {
             const formData = new FormData(target);
             let body = Object.fromEntries(formData.entries());
 
+            if (target.closest('.popup-call')) {
+                body = {
+                    ...body,
+                    ...orderData,
+                }
+            }
+
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(body),
@@ -42,7 +51,7 @@ export default function formSubmit(bodyListener) {
                         .forEach(input => input.value = '');
                 })
                 .catch(exception => {
-                    console.log(exception);
+                    console.error(exception);
                     statusHint.innerText = errorMessage;
                 });
         }

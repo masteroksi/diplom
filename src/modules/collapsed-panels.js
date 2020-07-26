@@ -1,3 +1,4 @@
+import { getNextSiblingBySelector } from '../helpers/next-sibling-by-selector';
 // collapsedPanels
 
 const showItem = (item) => {
@@ -21,11 +22,20 @@ const hideItem = (item) => {
     };
 };
 
-export default function(bodyListener) {
-    const parentWrapperClassName = 'panel-group';
-    const headerClassName = 'panel-heading';
-    const bodyClassName = 'panel-collapse';
+const parentWrapperClassName = 'panel-group';
+const headerClassName = 'panel-heading';
+const bodyClassName = 'panel-collapse';
 
+export const openNext = (clickedButton) => {
+    const panel = clickedButton.closest('.panel');
+    const nextPanel = getNextSiblingBySelector(panel, '.panel');
+    if (panel && nextPanel) {
+        hideItem(panel.querySelector(`.${bodyClassName}`));
+        showItem(nextPanel.querySelector(`.${bodyClassName}`));
+    }
+};
+
+export default function(bodyListener) {
     bodyListener.on('click', (ev) => {
         const { target } = ev;
         if (!target) {

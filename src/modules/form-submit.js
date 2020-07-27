@@ -32,7 +32,15 @@ export default function formSubmit(bodyListener) {
                 body = {
                     ...body,
                     ...orderData,
-                }
+                };
+            }
+
+            const consultationPopup = target.closest('.popup-consultation');
+            if (consultationPopup) {
+                body = {
+                    ...body,
+                    user_quest: document.querySelector('input[name=user_quest]').value,
+                };
             }
 
             fetch(url, {
@@ -49,6 +57,10 @@ export default function formSubmit(bodyListener) {
                     statusHint.innerText = successMessage;
                     target.querySelectorAll('input[type=text], input[type=email], input[type=tel]')
                         .forEach(input => input.value = '');
+
+                    if (consultationPopup) {
+                        document.querySelector('input[name=user_quest]').value = '';
+                    }
                 })
                 .catch(exception => {
                     console.error(exception);

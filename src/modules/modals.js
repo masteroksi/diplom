@@ -14,6 +14,12 @@ const modals = [
         openButtonsClassNames: ['gauging-button'],
         closeButtonsClassNames: ['popup-check', 'popup-close'],
     },
+    {
+        modalSelector: '.popup-consultation',
+        openButtonsClassNames: [],
+        submitOpenFormClassNames: ['director-form'],
+        closeButtonsClassNames: ['popup-consultation', 'popup-close'],
+    },
 ];
 
 export default function(bodyListener) {
@@ -45,6 +51,24 @@ export default function(bodyListener) {
             for (const closeButtonClassName of modalItem.closeButtonsClassNames) {
                 if (target.classList.contains(closeButtonClassName)) {
                     showModal(false);
+                }
+            }
+        });
+
+        bodyListener.on('submit', (ev) => {
+            const { target } = ev;
+            if (!target) {
+                return;
+            }
+
+            if (!modalItem.submitOpenFormClassNames || !modalItem.submitOpenFormClassNames.length) {
+                return;
+            }
+
+            for (const submitOpenFormClassName of modalItem.submitOpenFormClassNames) {
+                if (target.classList.contains(submitOpenFormClassName)) {
+                    ev.preventDefault();
+                    showModal(true);
                 }
             }
         });

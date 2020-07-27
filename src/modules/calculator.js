@@ -68,9 +68,6 @@ export default function(bodyListener, openNextPanel) {
 
     bodyListener.on('click', (ev) => {
         const { target } = ev;
-        if (!target) {
-            return;
-        }
 
         const nextButtonClicked = (
                 target.classList.contains(nextButtonClassName) && target
@@ -86,9 +83,6 @@ export default function(bodyListener, openNextPanel) {
 
     bodyListener.on('change', (ev) => {
         const { target } = ev;
-        if (!target) {
-            return;
-        }
 
         if (target.id === septicTypeCheckboxId) {
             if (target.checked) {

@@ -7,9 +7,6 @@ export default function formSubmit(bodyListener) {
 
     bodyListener.on('submit', (ev) => {
         const { target } = ev;
-        if (!target) {
-            return;
-        }
 
         if (
             target.classList.contains('capture-form') ||

@@ -22,6 +22,7 @@ const modals = [
     },
 ];
 
+
 export default function(bodyListener) {
     modals.forEach(modalItem => {
         const modal = document.querySelector(modalItem.modalSelector);
@@ -34,43 +35,38 @@ export default function(bodyListener) {
             modal.style.display = needToShow ? 'block' : 'none';
         };
 
-        bodyListener.on('click', (ev) => {
+        const actionsClasses = [
+            {
+                classList: modalItem.openButtonsClassNames,
+                needToShowModal: true,
+            },
+            {
+                classList: modalItem.closeButtonsClassNames,
+                needToShowModal: false,
+            },
+            {
+                classList: modalItem.submitOpenFormClassNames,
+                needToShowModal: true,
+            },
+        ];
+
+        const handler = (ev) => {
             const { target } = ev;
-            if (!target) {
-                return;
-            }
 
-            for (const openButtonClassName of modalItem.openButtonsClassNames) {
-                if (target.classList.contains(openButtonClassName)) {
-                    ev.preventDefault(); // open popup is a link in html =((
-                    showModal(true);
-                    return;
+            actionsClasses.forEach(actionClassesInfo => {
+                if (actionClassesInfo.classList && actionClassesInfo.classList.length) {
+                    for (const openButtonClassName of actionClassesInfo.classList) {
+                        if (target.classList.contains(openButtonClassName)) {
+                            ev.preventDefault(); // open popup is a link in html =((
+                            showModal(actionClassesInfo.needToShowModal);
+                            break;
+                        }
+                    }
                 }
-            }
+            });
+        };
 
-            for (const closeButtonClassName of modalItem.closeButtonsClassNames) {
-                if (target.classList.contains(closeButtonClassName)) {
-                    showModal(false);
-                }
-            }
-        });
-
-        bodyListener.on('submit', (ev) => {
-            const { target } = ev;
-            if (!target) {
-                return;
-            }
-
-            if (!modalItem.submitOpenFormClassNames || !modalItem.submitOpenFormClassNames.length) {
-                return;
-            }
-
-            for (const submitOpenFormClassName of modalItem.submitOpenFormClassNames) {
-                if (target.classList.contains(submitOpenFormClassName)) {
-                    ev.preventDefault();
-                    showModal(true);
-                }
-            }
-        });
+        bodyListener.on('click', handler);
+        bodyListener.on('submit', handler);
     });
 }

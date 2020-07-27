@@ -10,9 +10,6 @@ const numbersInputIds = ['meters-to-home'];
 export default function(bodyListener) {
     bodyListener.on('input', (ev) => {
         const { target } = ev;
-        if (!target) {
-            return;
-        }
 
         if (phoneInputIds.includes(target.id)) {
             only(target, /[^+0-9]/);

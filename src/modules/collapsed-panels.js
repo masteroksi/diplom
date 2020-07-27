@@ -38,9 +38,6 @@ export const openNext = (clickedButton) => {
 export default function(bodyListener) {
     bodyListener.on('click', (ev) => {
         const { target } = ev;
-        if (!target) {
-            return;
-        }
 
         if (
             target.closest(`.${headerClassName}`) &&

@@ -4,11 +4,15 @@ export class BodyListener {
     }
 
     addNewListener(eventType) {
-        document.body
-            .addEventListener(eventType, (ev) =>
+        document.body.addEventListener(eventType, (ev) => {
+                const { target } = ev;
+                if (!target) {
+                    return;
+                }
                 this.eventTypes[eventType]
-                    .forEach(callback => callback(ev)),
-            );
+                    .forEach(callback => callback(ev));
+            },
+        );
     }
 
     on(eventType, callback) {

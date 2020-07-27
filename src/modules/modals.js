@@ -28,7 +28,7 @@ export default function(bodyListener) {
             modal.style.display = needToShow ? 'block' : 'none';
         };
 
-        bodyListener.on('click', function(ev) {
+        bodyListener.on('click', (ev) => {
             const { target } = ev;
             if (!target) {
                 return;
